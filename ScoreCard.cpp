@@ -72,7 +72,12 @@ void ScoreCard::ShowStats(Setting& setting)
 	switch (setting.getWinner()) {			//checks who Won and computes it
 
 		case Setting::Turn::me:WinnerText.setString("Player 1 Wins"); setting.player1win(); break;
-		case Setting::Turn::you:WinnerText.setString("Player 2 Wins"); setting.player2win();  break;
+		case Setting::Turn::you:
+				switch (setting.getGameChoice()) {
+					case Setting::GameChoice::OnePlayer:WinnerText.setString("Computer  Wins"); break;
+					case Setting::GameChoice::TwoPlayer:WinnerText.setString("Player2  Wins"); break;
+				}//end of gamechoice switch
+		/*still in you case*/	setting.player2win();  break;
 		case Setting::Turn::draw:WinnerText.setString("....DRAW...."); break;
 		default:WinnerText.setString(""); break; //aka null
 
