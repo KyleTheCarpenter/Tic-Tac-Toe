@@ -27,7 +27,7 @@ public:								//private functions
 
 	void				 restartClock() { clock.restart(); }
 	void				 ComputerMove(Setting& Settings);
-
+	void				 PrintSquare(int num, Setting& settings);
 	
 private:					//private values
 

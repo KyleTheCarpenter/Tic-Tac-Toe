@@ -22,20 +22,264 @@ void OnePlayerScene::run(TextureList& TextureRenderer, FontList& FontRenderer)
 
 
 }
+void OnePlayerScene::PrintSquare(int num, Setting& settings) {
+	
+		if (myGrid.getSquare(num).getID() == Setting::Turn::Null) {
+			myGrid.updateSquare(num);
+	}
+		else if (myGrid.getSquare(num).getID() == Setting::Turn::me) {
+			ComputerMove(settings);
+			std::cout << "its hitting me";
+		}
+}
 void OnePlayerScene::ComputerMove(Setting& Settings)
 {
+	computerChoice = rand() % 9;
+	std::cout << computerChoice << "\n";
 	once = false;
-	computerChoice = rand() % 9;  //random number between 0 and 9
-	if (myGrid.getSquare(computerChoice).getState() == Square::State::Off) {
-		//only do this if the State is off
-		myGrid.updateSquare(computerChoice); //update the square
-		//if the current choice if off
+	//random number between 0 and 9
+
+   //check horizontal doubles toprow
+
+	if (myGrid.getTally() == 9)  {
+
 	}
-	else {
-		if (!scoreCard.Alive()) { //if winner hasnt been decided
-			ComputerMove(Settings);  //if square is already picked repick the number
-		}//end of if winner is showed
-	}//end of else
+	if (myGrid.getTally() < 9) {
+		if (myGrid.getSquare(0).getID() == Setting::Turn::you &&
+			myGrid.getSquare(1).getID() == Setting::Turn::you && myGrid.getSquare(2).getID() == Setting::Turn::Null) {
+
+			PrintSquare(2, Settings);
+		}
+		else if (myGrid.getSquare(1).getID() == Setting::Turn::you &&
+			myGrid.getSquare(2).getID() == Setting::Turn::you && myGrid.getSquare(0).getID() == Setting::Turn::Null) {
+			PrintSquare(0, Settings);
+		}
+		else if (myGrid.getSquare(0).getID() == Setting::Turn::you &&
+			myGrid.getSquare(2).getID() == Setting::Turn::you && myGrid.getSquare(1).getID() == Setting::Turn::Null) {
+			PrintSquare(1, Settings);
+		}
+		//check horizontal middle row
+		else if (myGrid.getSquare(3).getID() == Setting::Turn::you &&
+			myGrid.getSquare(4).getID() == Setting::Turn::you && myGrid.getSquare(5).getID() == Setting::Turn::Null) {
+			PrintSquare(5, Settings);
+		}
+		else if (myGrid.getSquare(5).getID() == Setting::Turn::you &&
+			myGrid.getSquare(4).getID() == Setting::Turn::you && myGrid.getSquare(3).getID() == Setting::Turn::Null) {
+			PrintSquare(3, Settings);
+		}
+		else if (myGrid.getSquare(5).getID() == Setting::Turn::you &&
+			myGrid.getSquare(3).getID() == Setting::Turn::you && myGrid.getSquare(4).getID() == Setting::Turn::Null) {
+			PrintSquare(4, Settings);
+		}
+
+		//check horizontal bottom row
+		else if (myGrid.getSquare(6).getID() == Setting::Turn::you &&
+			myGrid.getSquare(7).getID() == Setting::Turn::you && myGrid.getSquare(8).getID() == Setting::Turn::Null) {
+			PrintSquare(8, Settings);
+		}
+		else if (myGrid.getSquare(7).getID() == Setting::Turn::you &&
+			myGrid.getSquare(8).getID() == Setting::Turn::you && myGrid.getSquare(6).getID() == Setting::Turn::Null) {
+			PrintSquare(6, Settings);
+		}
+		else if (myGrid.getSquare(6).getID() == Setting::Turn::you &&
+			myGrid.getSquare(8).getID() == Setting::Turn::you && myGrid.getSquare(7).getID() == Setting::Turn::Null) {
+			PrintSquare(7, Settings);
+		}
+
+		//check vertical 1st row
+		else if (myGrid.getSquare(0).getID() == Setting::Turn::you &&
+			myGrid.getSquare(3).getID() == Setting::Turn::you && myGrid.getSquare(6).getID() == Setting::Turn::Null) {
+			PrintSquare(6, Settings);
+		}
+		else if (myGrid.getSquare(0).getID() == Setting::Turn::you &&
+			myGrid.getSquare(6).getID() == Setting::Turn::you && myGrid.getSquare(3).getID() == Setting::Turn::Null) {
+			PrintSquare(3, Settings);
+		}
+		else if (myGrid.getSquare(3).getID() == Setting::Turn::you &&
+			myGrid.getSquare(6).getID() == Setting::Turn::you && myGrid.getSquare(0).getID() == Setting::Turn::Null) {
+			PrintSquare(0, Settings);
+		}
+		//check vertical 2st row
+		else if (myGrid.getSquare(1).getID() == Setting::Turn::you &&
+			myGrid.getSquare(4).getID() == Setting::Turn::you && myGrid.getSquare(7).getID() == Setting::Turn::Null) {
+			PrintSquare(7, Settings);
+		}
+		else if (myGrid.getSquare(1).getID() == Setting::Turn::you &&
+			myGrid.getSquare(7).getID() == Setting::Turn::you && myGrid.getSquare(4).getID() == Setting::Turn::Null) {
+			PrintSquare(4, Settings);
+		}
+		else if (myGrid.getSquare(7).getID() == Setting::Turn::you &&
+			myGrid.getSquare(4).getID() == Setting::Turn::you && myGrid.getSquare(1).getID() == Setting::Turn::Null) {
+			PrintSquare(1, Settings);
+		}
+		//check vertical 3rd row
+		else if (myGrid.getSquare(2).getID() == Setting::Turn::you &&
+			myGrid.getSquare(5).getID() == Setting::Turn::you && myGrid.getSquare(8).getID() == Setting::Turn::Null) {
+			PrintSquare(8, Settings);
+		}
+		else if (myGrid.getSquare(2).getID() == Setting::Turn::you &&
+			myGrid.getSquare(8).getID() == Setting::Turn::you && myGrid.getSquare(5).getID() == Setting::Turn::Null) {
+			PrintSquare(5, Settings);
+		}
+		else if (myGrid.getSquare(5).getID() == Setting::Turn::you &&
+			myGrid.getSquare(8).getID() == Setting::Turn::you && myGrid.getSquare(2).getID() == Setting::Turn::Null) {
+			PrintSquare(2, Settings);
+		}
+
+		//check diag to the right
+		else if (myGrid.getSquare(0).getID() == Setting::Turn::you &&
+			myGrid.getSquare(4).getID() == Setting::Turn::you && myGrid.getSquare(8).getID() == Setting::Turn::Null) {
+			PrintSquare(8, Settings);
+		}
+		else if (myGrid.getSquare(0).getID() == Setting::Turn::you &&
+			myGrid.getSquare(8).getID() == Setting::Turn::you && myGrid.getSquare(4).getID() == Setting::Turn::Null) {
+			PrintSquare(4, Settings);
+		}
+		else if (myGrid.getSquare(4).getID() == Setting::Turn::you &&
+			myGrid.getSquare(8).getID() == Setting::Turn::you && myGrid.getSquare(0).getID() == Setting::Turn::Null) {
+			PrintSquare(0, Settings);
+		}
+		//check diag to the left
+		else if (myGrid.getSquare(2).getID() == Setting::Turn::you &&
+			myGrid.getSquare(4).getID() == Setting::Turn::you && myGrid.getSquare(6).getID() == Setting::Turn::Null) {
+			PrintSquare(6, Settings);
+		}
+		else if (myGrid.getSquare(2).getID() == Setting::Turn::you &&
+			myGrid.getSquare(6).getID() == Setting::Turn::you && myGrid.getSquare(4).getID() == Setting::Turn::Null) {
+			PrintSquare(4, Settings);
+		}
+		else if (myGrid.getSquare(6).getID() == Setting::Turn::you &&
+			myGrid.getSquare(4).getID() == Setting::Turn::you && myGrid.getSquare(2).getID() == Setting::Turn::Null) {
+			PrintSquare(2, Settings);
+		}
+
+	                                                                                                                 	//start player collision
+
+ //top row horiz
+		else if (myGrid.getSquare(0).getID() == Setting::Turn::me &&
+			myGrid.getSquare(1).getID() == Setting::Turn::me && myGrid.getSquare(2).getID() == Setting::Turn::Null) {
+
+			PrintSquare(2, Settings);
+		}
+		else if (myGrid.getSquare(1).getID() == Setting::Turn::me &&
+			myGrid.getSquare(2).getID() == Setting::Turn::me && myGrid.getSquare(0).getID() == Setting::Turn::Null) {
+			PrintSquare(0, Settings);
+		}
+		else if (myGrid.getSquare(0).getID() == Setting::Turn::me &&
+			myGrid.getSquare(2).getID() == Setting::Turn::me && myGrid.getSquare(1).getID() == Setting::Turn::Null) {
+			PrintSquare(1, Settings);
+		}
+		//check horizontal middle row
+		else if (myGrid.getSquare(3).getID() == Setting::Turn::me &&
+			myGrid.getSquare(4).getID() == Setting::Turn::me && myGrid.getSquare(5).getID() == Setting::Turn::Null) {
+			PrintSquare(5, Settings);
+		}
+		else if (myGrid.getSquare(5).getID() == Setting::Turn::me &&
+			myGrid.getSquare(4).getID() == Setting::Turn::me && myGrid.getSquare(3).getID() == Setting::Turn::Null) {
+			PrintSquare(3, Settings);
+		}
+		else if (myGrid.getSquare(5).getID() == Setting::Turn::me &&
+			myGrid.getSquare(3).getID() == Setting::Turn::me && myGrid.getSquare(4).getID() == Setting::Turn::Null) {
+			PrintSquare(4, Settings);
+		}
+
+		//check horizontal bottom row
+		else if (myGrid.getSquare(6).getID() == Setting::Turn::me &&
+			myGrid.getSquare(7).getID() == Setting::Turn::me && myGrid.getSquare(8).getID() == Setting::Turn::Null) {
+			PrintSquare(8, Settings);
+		}
+		else if (myGrid.getSquare(7).getID() == Setting::Turn::me &&
+			myGrid.getSquare(8).getID() == Setting::Turn::me && myGrid.getSquare(6).getID() == Setting::Turn::Null) {
+			PrintSquare(6, Settings);
+		}
+		else if (myGrid.getSquare(6).getID() == Setting::Turn::me &&
+			myGrid.getSquare(8).getID() == Setting::Turn::me && myGrid.getSquare(7).getID() == Setting::Turn::Null) {
+			PrintSquare(7, Settings);
+		}
+
+		//check vertical 1st row
+		else if (myGrid.getSquare(0).getID() == Setting::Turn::me &&
+			myGrid.getSquare(3).getID() == Setting::Turn::me && myGrid.getSquare(6).getID() == Setting::Turn::Null) {
+			PrintSquare(6, Settings);
+		}
+		else if (myGrid.getSquare(0).getID() == Setting::Turn::me &&
+			myGrid.getSquare(6).getID() == Setting::Turn::me && myGrid.getSquare(3).getID() == Setting::Turn::Null) {
+			PrintSquare(3, Settings);
+		}
+		else if (myGrid.getSquare(3).getID() == Setting::Turn::me &&
+			myGrid.getSquare(6).getID() == Setting::Turn::me && myGrid.getSquare(0).getID() == Setting::Turn::Null) {
+			PrintSquare(0, Settings);
+		}
+		//check vertical 2st row
+		else if (myGrid.getSquare(1).getID() == Setting::Turn::me &&
+			myGrid.getSquare(4).getID() == Setting::Turn::me && myGrid.getSquare(7).getID() == Setting::Turn::Null) {
+			PrintSquare(7, Settings);
+		}
+		else if (myGrid.getSquare(1).getID() == Setting::Turn::me &&
+			myGrid.getSquare(7).getID() == Setting::Turn::me && myGrid.getSquare(4).getID() == Setting::Turn::Null) {
+			PrintSquare(4, Settings);
+		}
+		else if (myGrid.getSquare(7).getID() == Setting::Turn::me &&
+			myGrid.getSquare(4).getID() == Setting::Turn::me && myGrid.getSquare(1).getID() == Setting::Turn::Null) {
+			PrintSquare(1, Settings);
+		}
+		//check vertical 3rd row
+		else if (myGrid.getSquare(2).getID() == Setting::Turn::me &&
+			myGrid.getSquare(5).getID() == Setting::Turn::me && myGrid.getSquare(8).getID() == Setting::Turn::Null) {
+			PrintSquare(8, Settings);
+		}
+		else if (myGrid.getSquare(2).getID() == Setting::Turn::me &&
+			myGrid.getSquare(8).getID() == Setting::Turn::me && myGrid.getSquare(5).getID() == Setting::Turn::Null) {
+			PrintSquare(5, Settings);
+		}
+		else if (myGrid.getSquare(5).getID() == Setting::Turn::me &&
+			myGrid.getSquare(8).getID() == Setting::Turn::me && myGrid.getSquare(2).getID() == Setting::Turn::Null) {
+			PrintSquare(2, Settings);
+		}
+
+		//check diag to the right
+		else if (myGrid.getSquare(0).getID() == Setting::Turn::me &&
+			myGrid.getSquare(4).getID() == Setting::Turn::me && myGrid.getSquare(8).getID() == Setting::Turn::Null) {
+			PrintSquare(8, Settings);
+		}
+		else if (myGrid.getSquare(0).getID() == Setting::Turn::me &&
+			myGrid.getSquare(8).getID() == Setting::Turn::me && myGrid.getSquare(4).getID() == Setting::Turn::Null) {
+			PrintSquare(4, Settings);
+		}
+		else if (myGrid.getSquare(4).getID() == Setting::Turn::me &&
+			myGrid.getSquare(8).getID() == Setting::Turn::me && myGrid.getSquare(0).getID() == Setting::Turn::Null) {
+			PrintSquare(0, Settings);
+		}
+		//check diag to the left
+		else if (myGrid.getSquare(2).getID() == Setting::Turn::me &&
+			myGrid.getSquare(4).getID() == Setting::Turn::me && myGrid.getSquare(6).getID() == Setting::Turn::Null) {
+			PrintSquare(6, Settings);
+		}
+		else if (myGrid.getSquare(2).getID() == Setting::Turn::me &&
+			myGrid.getSquare(6).getID() == Setting::Turn::me && myGrid.getSquare(4).getID() == Setting::Turn::Null) {
+			PrintSquare(4, Settings);
+		}
+		else if (myGrid.getSquare(6).getID() == Setting::Turn::me &&
+			myGrid.getSquare(4).getID() == Setting::Turn::me && myGrid.getSquare(2).getID() == Setting::Turn::Null) {
+			PrintSquare(2, Settings);
+		}
+
+		///end
+
+		else if (myGrid.getSquare(computerChoice).getID() == Setting::Turn::Null) {
+			PrintSquare(computerChoice, Settings);
+			std::cout << "this should print";
+		}
+		else if (myGrid.getSquare(computerChoice).getID() == Setting::Turn::you) {
+			ComputerMove(Settings);
+			std::cout << "hit you";
+		}
+		else if (myGrid.getSquare(computerChoice).getID() == Setting::Turn::me) {
+			ComputerMove(Settings);
+			std::cout << "hit me";
+		}
+	}
+	//end of else
 }
 void OnePlayerScene::mainEventHandler(sf::Event& Event,Setting & Settings)
 {
@@ -72,6 +316,7 @@ void OnePlayerScene::mainUpdate(sf::RenderWindow& rWindow, Setting& Settings)
 		time = clock.getElapsedTime();
 		if (time.asMilliseconds() >= 1500 && once == true){ //every 1.5sec reset clock and compute move. set turn back to player1
 			clock.restart();
+			if(myGrid.getTally() < 9)
 			ComputerMove(Settings);
 			Settings.setTurn(Setting::Turn::me);
 			
