@@ -1,0 +1,72 @@
+all features of Calculator
+
+		(1) Graphical user interface(The Stage)
+		(2) Buttons
+		(3) Display
+		(END) Code
+-------------------------------------------------		
+
+                                                      #define to be determined-> tbd
+(1) Graphical user interface(The Stage)
+		(A)Background
+				->																			(size)		400x500
+				->																			(colour)	grey
+																									fntBlack
+				->																			(animation) false
+		(B)Title
+					(Text)Simple Calculator
+					(Font)tbd
+					(Size)tbd
+					(position)centered at top
+		(D)ORIENTATION
+	------------------------------
+	           Title
+	-------------------------------
+	0
+	-------------------------------
+	Button	Button	Button  but  |   History  "move history beside title 
+	                        but	 |	 ....    "button area will expand where history is 
+	Button  Button  Button  but  |   ,,,,,
+	                        but  |   .....
+	Button  Button  Button  but  |   .....
+	-------------------------------
+-------------------------------------------------
+(2) Buttons
+		(A)Button Graphics
+		->v																		(colour) 
+		->v																			bg-dk blue
+		->v																			customfont-lightblue
+		->v																		(Properties) 
+																					size is 30x60 unlessotherwise
+																					centerd customfont
+																				(animiation)true
+																					(scenes)3
+																					scene 2 is shaded darker
+		->.																			scene 3 is even darker
+		(B)Button Content
+				(numbers)0-9
+				(operators)+-/* =
+				(clear)
+				(back)will be(<--)
+				(remember)
+
+--------------------------------------------------
+(3) Display
+		(A) Text Box
+				(graphics)
+					centerd toward left tbd
+					size is relative tbd
+					font tbd
+				(rectangle)
+					colour white
+					size tbd
+		(B) History Box
+			(graphics)
+				beside textbox
+				goin down 3 lines.
+				rest is tbd
+---------------------------------------------------
+(END) Code
+ 
+ -add bg
+		

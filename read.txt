@@ -1,0 +1,47 @@
+
+		Game: TicTacToe
+
+		Main Menu with choice of computer or 2player...
+
+		when playing will want to be able to pause and exit
+
+		there will be a loading screen between screens 
+
+		Simple 3x3 grid tic tac toe explanitory
+
+		square will highlight when mouse is over an avilable Square
+
+		Players turn then other Players turn not at same time.
+
+
+
+
+		_______________________________________________________________________________
+
+		MenuButton-> clickable tile button
+	1	Main -> summons game
+	2	Game -> summons level-update, level-events, level-draw,decides between menus. contains menu buttons... contains resources
+	3	Level -> Summons a grid, records scores,hold information available to the game
+	4	Square -> independent, can be highlighed or locked with an State
+	5	Grid -> summons squares in a pattern. relays their combinations
+	8	Paint -> Paints a sprite on the square will refrence the sprite
+	6	TextureList-> ..
+	7	FontList->   ..
+	9	TextBox-> a Box with a title and a Changeable value
+		ScoreBox-> a box containing all textboxes and controls their values
+	*1	Settings-> will have window info and game info for relay
+
+	___________________________________________________
+	graphics.. stage 600,600
+
+	will Need Main Menu,MainGame backgrounds..
+
+
+
+	/////////////////////////////////////////
+
+
+	Menu GUI
+
+	Clickable, options 1 player, 2 player, Exit
+
